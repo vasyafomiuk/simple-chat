@@ -1,0 +1,37 @@
+<html lang="en">
+<head>
+    <title>Chat</title>
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/bootstrap.min.css}">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta charset="UTF-8">
+</head>
+<body class="p-3 mb-2 bg-light text-black">
+<ul class="nav justify-content-end">
+    <li class="nav-item">
+        <a class="nav-link active" th:href="@{'/logout'}">Logout</a>
+    </li>
+</ul>
+<div class="container">
+    <h1 class="display-1" style="text-align: center">Light chat</h1>
+    <hr>
+        <p class="h2" th:unless="${#lists.isEmpty(chatMessages)}" th:each="msg: ${chatMessages}">
+            <span class="text-muted" th:text="${msg.username} + ': '"></span>
+            <span class="font-weight-bold" th:text="${msg.messageText}"></span>
+            <br>
+        </p>
+    <form th:action="@{'/chat'}" th:object="${chat}" action="#" method="POST">
+        <div class="form-row">
+            <label class="col-form-label" for="messageText">Message Text:</label>
+            <input th:field="*{text}" id="messageText" name="text" type="text" required>
+            <label style="margin-left: .5em" class="col-form-label" for="messageType">Message Type: </label>
+            <select th:field="*{type}" id="messageType">
+                <option th:value="Say" th:text="Say" selected></option>
+                <option th:value="Shout" th:text="Shout"></option>
+                <option th:value="Whisper" th:text="Whisper"></option>
+            </select>
+            <input style="margin-left: .5em" class="btn btn-primary" type="submit" value="Send">
+        </div>
+    </form>
+</div>
+</body>
+</html>
