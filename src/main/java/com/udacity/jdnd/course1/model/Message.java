@@ -6,7 +6,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.List;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 @Getter
 @Setter
@@ -23,4 +24,5 @@ public class Message {
     private String username;
     @Column(name = "messagetext", nullable = false)
     private String messageText;
+    private Timestamp datetime;
 }

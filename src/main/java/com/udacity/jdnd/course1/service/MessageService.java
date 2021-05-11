@@ -33,6 +33,7 @@ public class MessageService {
             ChatMessage chatMessage = new ChatMessage();
             chatMessage.setUsername(message.getUsername());
             chatMessage.setMessageText(message.getMessageText());
+            chatMessage.setDatetime(message.getDatetime());
             chatMessages.add(chatMessage);
         }
         return chatMessages;

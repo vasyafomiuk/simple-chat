@@ -15,7 +15,7 @@
     <h1 class="display-1" style="text-align: center">Light chat</h1>
     <hr>
         <p class="h2" th:unless="${#lists.isEmpty(chatMessages)}" th:each="msg: ${chatMessages}">
-            <span class="text-muted" th:text="${msg.username} + ': '"></span>
+            <span class="text-muted" th:text="${msg.username+ ' on ' + #dates.format(msg.datetime, 'MMM dd yyyy HH:mm')} +': '"></span>
             <span class="font-weight-bold" th:text="${msg.messageText}"></span>
             <br>
         </p>

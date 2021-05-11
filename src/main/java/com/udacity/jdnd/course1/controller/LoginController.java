@@ -29,6 +29,13 @@ public class LoginController {
         return "login";
     }
 
+    @GetMapping("/logout")
+    public String logout(@ModelAttribute("loginForm") LoginForm loginForm, Model model) {
+        logger.info("logout");
+        model.addAttribute("logout", "You have been logged out");
+        return "login";
+    }
+
     @PostMapping("/login")
     public String postLogin(@ModelAttribute("loginForm") LoginForm loginForm, Model model) {
         model.addAttribute("loginForm", new LoginForm());
